@@ -115,6 +115,23 @@ main {
   border-bottom: 1px solid var(--border);
 }
 
+.coin-table th.sortable {
+  cursor: pointer;
+  user-select: none;
+}
+
+.coin-table th.sortable:hover {
+  color: var(--text);
+}
+
+.coin-table th.sort-asc::after {
+  content: " \25B4";
+}
+
+.coin-table th.sort-desc::after {
+  content: " \25BE";
+}
+
 .coin-table td {
   padding: 12px;
   border-bottom: 1px solid var(--border);

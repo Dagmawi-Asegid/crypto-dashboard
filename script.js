@@ -121,5 +121,20 @@ searchInput.addEventListener("input", () => {
   renderTable(filtered);
 });
 
+let sortKey = null;
+let sortDir = 1;
+
+document.querySelectorAll("th.sortable").forEach((th) => {
+  th.addEventListener("click", () => {
+    const key = th.dataset.sort;
+    sortDir = sortKey === key ? -sortDir : 1;
+    sortKey = key;
+    document.querySelectorAll("th.sortable").forEach((h) => h.classList.remove("sort-asc", "sort-desc"));
+    th.classList.add(sortDir === 1 ? "sort-asc" : "sort-desc");
+    const sorted = [...coins].sort((a, b) => sortDir * ((a[sortKey] ?? 0) - (b[sortKey] ?? 0)));
+    renderTable(sorted);
+  });
+});
+
 loadMarkets();
 setInterval(loadMarkets, REFRESH_INTERVAL_MS);
