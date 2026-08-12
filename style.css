@@ -54,6 +54,12 @@ h1 {
   min-width: 220px;
 }
 
+.last-updated {
+  color: var(--muted);
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+
 main {
   padding: 28px 0 60px;
 }

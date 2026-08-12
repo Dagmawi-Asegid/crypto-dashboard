@@ -7,6 +7,9 @@ const searchInput = document.getElementById("searchInput");
 const chartTitle = document.getElementById("chartTitle");
 const chartMeta = document.getElementById("chartMeta");
 const ctx = document.getElementById("priceChart");
+const lastUpdatedEl = document.getElementById("lastUpdated");
+
+const REFRESH_INTERVAL_MS = 60_000;
 
 let coins = [];
 let chart;
@@ -30,6 +33,7 @@ async function loadMarkets() {
     statusEl.hidden = true;
     tableEl.hidden = false;
     if (coins.length) loadChart(coins[0]);
+    lastUpdatedEl.textContent = `Updated ${new Date().toLocaleTimeString()}`;
   } catch (err) {
     statusEl.textContent = `Couldn't load market data (${err.message}). CoinGecko's public API is rate-limited — try refreshing in a moment.`;
   }
@@ -118,3 +122,4 @@ searchInput.addEventListener("input", () => {
 });
 
 loadMarkets();
+setInterval(loadMarkets, REFRESH_INTERVAL_MS);
