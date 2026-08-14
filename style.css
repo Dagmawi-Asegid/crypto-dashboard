@@ -175,6 +175,36 @@ main {
   padding: 28px 0 60px;
 }
 
+/* ---------- Jump nav (quick links to page sections) ---------- */
+
+.jump-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg);
+  padding: 10px 0;
+}
+
+.jump-nav a {
+  color: var(--text);
+  text-decoration: none;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 6px 13px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.jump-nav a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 /* ---------- Disclaimer / info banners ---------- */
 
 .banner {
