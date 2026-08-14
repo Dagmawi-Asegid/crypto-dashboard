@@ -1,14 +1,18 @@
 :root {
-  --bg: #0b0e14;
-  --surface: #131722;
-  --surface-2: #1a1f2e;
-  --border: #232838;
-  --text: #e6e9f0;
-  --muted: #8b93a7;
-  --green: #26a69a;
-  --red: #ef5350;
-  --accent: #7c8cff;
-  --amber: #d9a441;
+  --bg: #0a0a14;
+  --surface: rgba(24, 20, 42, 0.72);
+  --surface-2: rgba(35, 28, 58, 0.85);
+  --border: rgba(139, 92, 246, 0.18);
+  --text: #f2f0fb;
+  --muted: #a29bc4;
+  --green: #1fe08a;
+  --red: #ff4d6d;
+  --accent: #8b5cf6;
+  --accent-2: #22d3ee;
+  --accent-3: #f472b6;
+  --amber: #ffb020;
+  --gradient-brand: linear-gradient(120deg, var(--accent), var(--accent-2));
+  --gradient-warm: linear-gradient(120deg, var(--accent-3), var(--amber));
 }
 
 * {
@@ -17,13 +21,26 @@
 
 body {
   margin: 0;
+  min-height: 100vh;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background: var(--bg);
   color: var(--text);
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(1100px circle at 8% -10%, rgba(139, 92, 246, 0.38), transparent 45%),
+    radial-gradient(900px circle at 92% 0%, rgba(34, 211, 238, 0.28), transparent 45%),
+    radial-gradient(1000px circle at 50% 115%, rgba(244, 114, 182, 0.22), transparent 50%),
+    radial-gradient(700px circle at 100% 60%, rgba(31, 224, 138, 0.12), transparent 45%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 
 a {
-  color: var(--accent);
+  color: var(--accent-2);
+}
+
+::selection {
+  background: var(--accent);
+  color: #0a0a14;
 }
 
 code {
@@ -43,8 +60,22 @@ code {
 /* ---------- Top navigation (shared across all pages) ---------- */
 
 .topnav {
+  position: relative;
   border-bottom: 1px solid var(--border);
   background: var(--surface);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.topnav::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent-3));
+  opacity: 0.8;
 }
 
 .topnav-row {
@@ -60,6 +91,13 @@ code {
   font-weight: 700;
   font-size: 1rem;
   letter-spacing: 0.01em;
+}
+
+.brand-text {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .nav-links {
@@ -79,12 +117,12 @@ code {
 
 .nav-link:hover {
   color: var(--text);
-  background: rgba(124, 140, 255, 0.08);
+  background: rgba(139, 92, 246, 0.08);
 }
 
 .nav-link.active {
   color: var(--text);
-  background: rgba(124, 140, 255, 0.14);
+  background: rgba(139, 92, 246, 0.14);
 }
 
 /* ---------- Page header ---------- */
@@ -105,6 +143,11 @@ header {
 h1 {
   font-size: 1.3rem;
   margin: 0;
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  width: fit-content;
 }
 
 h1 .subtitle {
@@ -125,6 +168,8 @@ h1 .subtitle {
 #searchInput,
 #stockSearchInput {
   background: var(--surface);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   border: 1px solid var(--border);
   color: var(--text);
   padding: 9px 14px;
@@ -155,10 +200,16 @@ h1 .subtitle {
 }
 
 .btn-primary {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: #0b0e14;
-  font-weight: 600;
+  background: var(--gradient-brand);
+  border-color: transparent;
+  color: #0a0a14;
+  font-weight: 700;
+  box-shadow: 0 4px 18px rgba(139, 92, 246, 0.35);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 6px 22px rgba(139, 92, 246, 0.5);
+  filter: brightness(1.05);
 }
 
 .btn-small {
@@ -193,6 +244,8 @@ main {
   color: var(--text);
   text-decoration: none;
   background: var(--surface);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   border: 1px solid var(--border);
   padding: 6px 13px;
   border-radius: 20px;
@@ -208,8 +261,8 @@ main {
 /* ---------- Disclaimer / info banners ---------- */
 
 .banner {
-  background: rgba(217, 164, 65, 0.1);
-  border: 1px solid rgba(217, 164, 65, 0.35);
+  background: rgba(255, 176, 32, 0.1);
+  border: 1px solid rgba(255, 176, 32, 0.35);
   color: var(--text);
   border-radius: 10px;
   padding: 14px 18px;
@@ -223,8 +276,8 @@ main {
 }
 
 .banner.info {
-  background: rgba(124, 140, 255, 0.08);
-  border-color: rgba(124, 140, 255, 0.3);
+  background: rgba(139, 92, 246, 0.08);
+  border-color: rgba(139, 92, 246, 0.3);
 }
 
 .banner.info strong {
@@ -234,11 +287,25 @@ main {
 /* ---------- Chart panel (shared: crypto + stocks) ---------- */
 
 .chart-panel {
+  position: relative;
   background: var(--surface);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 20px;
   margin-bottom: 28px;
+  overflow: hidden;
+}
+
+.chart-panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-brand);
 }
 
 .chart-header {
@@ -280,7 +347,7 @@ main {
 .chart-range button.active {
   color: var(--text);
   border-color: var(--accent);
-  background: rgba(124, 140, 255, 0.1);
+  background: rgba(139, 92, 246, 0.1);
 }
 
 .status {
@@ -336,7 +403,7 @@ main {
 }
 
 .data-table tbody tr:hover {
-  background: rgba(124, 140, 255, 0.06);
+  background: rgba(139, 92, 246, 0.06);
 }
 
 .asset-name {
@@ -392,6 +459,8 @@ main {
 .watchlist-add input {
   flex: 1;
   background: var(--surface);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   border: 1px solid var(--border);
   color: var(--text);
   padding: 9px 14px;
@@ -425,6 +494,8 @@ main {
 
 .modal {
   background: var(--surface);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 24px;
@@ -480,10 +551,35 @@ main {
 
 .fund-card {
   background: var(--surface);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
   border-radius: 10px;
   padding: 16px;
+  transition: transform 0.15s, box-shadow 0.15s;
 }
+
+.fund-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.18);
+}
+
+.fund-grid .fund-card:nth-of-type(8n + 2) { border-left-color: var(--accent-2); }
+.fund-grid .fund-card:nth-of-type(8n + 3) { border-left-color: var(--accent-3); }
+.fund-grid .fund-card:nth-of-type(8n + 4) { border-left-color: var(--green); }
+.fund-grid .fund-card:nth-of-type(8n + 5) { border-left-color: var(--amber); }
+.fund-grid .fund-card:nth-of-type(8n + 6) { border-left-color: var(--accent-2); }
+.fund-grid .fund-card:nth-of-type(8n + 7) { border-left-color: var(--accent-3); }
+.fund-grid .fund-card:nth-of-type(8n + 8) { border-left-color: var(--amber); }
+
+.fund-grid .fund-card:nth-of-type(8n + 2) .fund-category { color: var(--accent-2); }
+.fund-grid .fund-card:nth-of-type(8n + 3) .fund-category { color: var(--accent-3); }
+.fund-grid .fund-card:nth-of-type(8n + 4) .fund-category { color: var(--green); }
+.fund-grid .fund-card:nth-of-type(8n + 5) .fund-category { color: var(--amber); }
+.fund-grid .fund-card:nth-of-type(8n + 6) .fund-category { color: var(--accent-2); }
+.fund-grid .fund-card:nth-of-type(8n + 7) .fund-category { color: var(--accent-3); }
+.fund-grid .fund-card:nth-of-type(8n + 8) .fund-category { color: var(--amber); }
 
 .fund-card .fund-category {
   color: var(--accent);
@@ -524,6 +620,8 @@ main {
   border-collapse: collapse;
   font-size: 0.85rem;
   background: var(--surface);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   border: 1px solid var(--border);
   border-radius: 10px;
   overflow: hidden;
@@ -590,7 +688,7 @@ footer {
 
 .help-btn:hover,
 .help-btn[aria-expanded="true"] {
-  color: #0b0e14;
+  color: #0a0a14;
   background: var(--accent);
   border-color: var(--accent);
 }
@@ -650,6 +748,8 @@ footer {
 
 .beginner-box {
   background: var(--surface);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   border: 1px solid var(--border);
   border-radius: 10px;
   margin-bottom: 24px;
@@ -682,7 +782,7 @@ footer {
 }
 
 .beginner-box summary:hover {
-  background: rgba(124, 140, 255, 0.06);
+  background: rgba(139, 92, 246, 0.06);
 }
 
 .beginner-body {
@@ -719,10 +819,22 @@ footer {
 
 .glossary-card {
   background: var(--surface);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
   border-radius: 10px;
   overflow: hidden;
+  transition: transform 0.15s, box-shadow 0.15s;
 }
+
+.glossary-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.16);
+}
+
+.glossary-grid .glossary-card:nth-of-type(3n + 2) { border-left-color: var(--accent-2); }
+.glossary-grid .glossary-card:nth-of-type(3n + 3) { border-left-color: var(--accent-3); }
 
 .glossary-card summary {
   cursor: pointer;
@@ -752,7 +864,7 @@ footer {
 }
 
 .glossary-card summary:hover {
-  background: rgba(124, 140, 255, 0.06);
+  background: rgba(139, 92, 246, 0.06);
 }
 
 .glossary-card .glossary-body {
@@ -796,7 +908,7 @@ footer {
   height: 26px;
   border-radius: 50%;
   background: var(--accent);
-  color: #0b0e14;
+  color: #0a0a14;
   font-weight: 700;
   font-size: 0.82rem;
   display: flex;
@@ -820,10 +932,24 @@ footer {
 
 .visa-card {
   background: var(--surface);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   border: 1px solid var(--border);
+  border-left: 3px solid var(--accent-2);
   border-radius: 10px;
   padding: 16px;
+  transition: transform 0.15s, box-shadow 0.15s;
 }
+
+.visa-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(34, 211, 238, 0.16);
+}
+
+.visa-grid .visa-card:nth-of-type(5n + 2) { border-left-color: var(--accent-3); }
+.visa-grid .visa-card:nth-of-type(5n + 3) { border-left-color: var(--green); }
+.visa-grid .visa-card:nth-of-type(5n + 4) { border-left-color: var(--amber); }
+.visa-grid .visa-card:nth-of-type(5n + 5) { border-left-color: var(--accent); }
 
 .visa-card h3 {
   margin: 0 0 8px;
@@ -851,7 +977,7 @@ footer {
 
 .pill {
   display: inline-block;
-  background: rgba(124, 140, 255, 0.14);
+  background: rgba(139, 92, 246, 0.14);
   color: var(--accent);
   font-size: 0.72rem;
   font-weight: 600;

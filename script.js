@@ -81,8 +81,8 @@ async function loadChart(coin) {
           {
             label: `${coin.symbol.toUpperCase()} / USD`,
             data: points,
-            borderColor: "#7c8cff",
-            backgroundColor: "rgba(124,140,255,0.12)",
+            borderColor: "#8b5cf6",
+            backgroundColor: "rgba(139,92,246,0.18)",
             fill: true,
             tension: 0.25,
             pointRadius: 0,
@@ -96,12 +96,12 @@ async function loadChart(coin) {
           x: {
             type: "time",
             time: { unit: "day" },
-            grid: { color: "#232838" },
-            ticks: { color: "#8b93a7" },
+            grid: { color: "rgba(139,92,246,0.15)" },
+            ticks: { color: "#a29bc4" },
           },
           y: {
-            grid: { color: "#232838" },
-            ticks: { color: "#8b93a7" },
+            grid: { color: "rgba(139,92,246,0.15)" },
+            ticks: { color: "#a29bc4" },
           },
         },
         plugins: { legend: { display: false } },
