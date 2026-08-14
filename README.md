@@ -7,10 +7,17 @@ A small, no-build-step market dashboard with three pages:
 - **`stocks.html` — Stocks.** A customizable stock watchlist (live quotes + price history charts) powered by
   the [Twelve Data](https://twelvedata.com/pricing) API. Requires a free API key (no credit card) — the app
   will prompt for it and store it only in your browser's `localStorage`. It is never written to this repo.
-- **`funds.html` — Index Funds & Brokerages.** A static educational reference page: what common index funds
-  (S&P 500, total market, bonds, international, etc.) track, and a general feature comparison of major US
-  brokerages. Clearly labeled as general information, not personalized financial advice — nothing on this
-  page is fetched from an API.
+- **`funds.html` — Index Funds & Brokerages.** A beginner-friendly educational reference page: a plain-English
+  investing glossary, what common index funds (S&P 500, total market, bonds, international, etc.) track, a
+  general feature comparison of major US brokerages, and a dedicated section on investing as an international
+  student/visa holder (F-1, OPT/CPT, J-1, H-1B) — SSN/ITIN and W-8BEN basics, and how nonresident-alien tax
+  treatment works for capital gains and dividends, sourced from IRS.gov and Sprintax. Clearly labeled as
+  general information, not personalized financial/tax/legal advice — nothing on this page is fetched from an
+  API.
+
+Every page has small "?" buttons next to jargon (percent changes, chart ranges, table columns, etc.) that pop
+up a short plain-English explanation on click — built for someone with zero background. Shared logic lives in
+`help.js`.
 
 Vanilla JavaScript, no build step, no framework.
 

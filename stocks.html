@@ -38,12 +38,50 @@
       This tool is for tracking and education only — always verify prices with your broker before trading.
     </div>
 
+    <details class="beginner-box" open>
+      <summary>New to stocks? Start here — plain-English basics (click to collapse)</summary>
+      <div class="beginner-body">
+        <p><strong>A stock</strong> is a tiny slice of ownership in a company. When you own a share of Apple
+        stock, you own a small piece of Apple. Its price goes up when more people want to buy than sell, and
+        down when more people want to sell than buy.</p>
+        <p><strong>A ticker symbol</strong> is a company's short nickname on the stock market — e.g.
+        <code>AAPL</code> = Apple, <code>TSLA</code> = Tesla, <code>SPY</code>/<code>QQQ</code> = popular
+        index funds (see the <a href="funds.html">Index Funds page</a> for what those track).</p>
+        <ul>
+          <li><strong>This page only tracks prices</strong> — it doesn't buy, sell, or connect to a real
+          brokerage account. To actually invest, you'd open an account at a real brokerage
+          (see the <a href="funds.html">Index Funds &amp; Brokerages page</a>) and place the trade there.</li>
+          <li><strong>Your watchlist</strong> is just the list of tickers you're keeping an eye on — add or
+          remove any with the box below the chart.</li>
+          <li>Every column has its own "?" button — click any of them for a plain-English explanation.</li>
+        </ul>
+      </div>
+    </details>
+
     <section class="chart-panel">
       <div class="chart-header">
-        <h2 id="stockChartTitle">Select a stock to view its price history</h2>
+        <h2 id="stockChartTitle">
+          Select a stock to view its price history
+          <span class="help-wrap">
+            <button class="help-btn" type="button" aria-expanded="false" aria-controls="help-stock-chart" aria-label="How do I read this chart?">?</button>
+            <span class="help-popover" id="help-stock-chart" role="tooltip" hidden>
+              This line traces the stock's closing price each trading day. <strong>Sloping up</strong> means the
+              price rose over that period; <strong>sloping down</strong> means it fell. It shows the past only —
+              it can't predict what happens next.
+            </span>
+          </span>
+        </h2>
         <span id="stockChartMeta"></span>
       </div>
       <div class="chart-range" id="chartRange">
+        <span class="help-wrap" style="margin-right: 6px;">
+          <button class="help-btn" type="button" aria-expanded="false" aria-controls="help-range" aria-label="What do these range buttons do?">?</button>
+          <span class="help-popover" id="help-range" role="tooltip" hidden>
+            Changes how far back the chart looks: <strong>1M</strong> = past 1 month, <strong>3M</strong> = past
+            3 months, and so on. Zooming out (6M/1Y) shows the bigger long-term trend; zooming in (1M) shows
+            recent, day-to-day movement.
+          </span>
+        </span>
         <button data-range="1M" class="active">1M</button>
         <button data-range="3M">3M</button>
         <button data-range="6M">6M</button>
@@ -67,12 +105,63 @@
           <tr>
             <th>#</th>
             <th>Symbol</th>
-            <th class="sortable" data-sort="price">Price</th>
-            <th class="sortable" data-sort="changePercent">Change</th>
-            <th class="sortable" data-sort="open">Open</th>
-            <th class="sortable" data-sort="high">High</th>
-            <th class="sortable" data-sort="low">Low</th>
-            <th class="sortable" data-sort="prevClose">Prev Close</th>
+            <th class="sortable" data-sort="price">
+              <span class="help-wrap">
+                Price
+                <button class="help-btn" type="button" aria-expanded="false" aria-controls="help-s-price" aria-label="What does Price mean?">?</button>
+                <span class="help-popover" id="help-s-price" role="tooltip" hidden>
+                  The most recent trading price for one share, in US dollars.
+                </span>
+              </span>
+            </th>
+            <th class="sortable" data-sort="changePercent">
+              <span class="help-wrap">
+                Change
+                <button class="help-btn" type="button" aria-expanded="false" aria-controls="help-s-change" aria-label="What does Change mean?">?</button>
+                <span class="help-popover" id="help-s-change" role="tooltip" hidden>
+                  How much the price moved compared to the previous day's close, as a percent.
+                  <strong>Green + means up</strong>, <strong>red − means down</strong>. Example: −2% means the
+                  stock is worth 2% less today than at yesterday's close.
+                </span>
+              </span>
+            </th>
+            <th class="sortable" data-sort="open">
+              <span class="help-wrap">
+                Open
+                <button class="help-btn" type="button" aria-expanded="false" aria-controls="help-s-open" aria-label="What does Open mean?">?</button>
+                <span class="help-popover" id="help-s-open" role="tooltip" hidden>
+                  The price when the stock market opened today (9:30am Eastern Time for US markets).
+                </span>
+              </span>
+            </th>
+            <th class="sortable" data-sort="high">
+              <span class="help-wrap">
+                High
+                <button class="help-btn" type="button" aria-expanded="false" aria-controls="help-s-high" aria-label="What does High mean?">?</button>
+                <span class="help-popover" id="help-s-high" role="tooltip" hidden>
+                  The highest price the stock reached at any point today.
+                </span>
+              </span>
+            </th>
+            <th class="sortable" data-sort="low">
+              <span class="help-wrap">
+                Low
+                <button class="help-btn" type="button" aria-expanded="false" aria-controls="help-s-low" aria-label="What does Low mean?">?</button>
+                <span class="help-popover" id="help-s-low" role="tooltip" hidden>
+                  The lowest price the stock reached at any point today.
+                </span>
+              </span>
+            </th>
+            <th class="sortable" data-sort="prevClose">
+              <span class="help-wrap">
+                Prev Close
+                <button class="help-btn" type="button" aria-expanded="false" aria-controls="help-s-prev" aria-label="What does Prev Close mean?">?</button>
+                <span class="help-popover" id="help-s-prev" role="tooltip" hidden>
+                  The price when the market closed on the previous trading day — the baseline that "Change" is
+                  measured against.
+                </span>
+              </span>
+            </th>
             <th></th>
           </tr>
         </thead>
@@ -103,6 +192,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3"></script>
+  <script src="help.js"></script>
   <script src="stocks.js"></script>
 </body>
 </html>

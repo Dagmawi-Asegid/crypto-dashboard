@@ -29,9 +29,30 @@
   </header>
 
   <main class="container">
+    <details class="beginner-box">
+      <summary>New to charts and market data? Quick guide (click to open)</summary>
+      <div class="beginner-body">
+        <p><strong>The chart</strong> shows one coin's price over the last 7 days. The line going up means the
+        price rose; going down means it fell. It's just a picture of history — it doesn't predict the future.</p>
+        <p><strong>The table</strong> lists coins ranked by <strong>market cap</strong> (see the "?" next to
+        that column) — roughly, the biggest/most-established coins are at the top.</p>
+        <p><strong>Click any row</strong> to load that coin's chart above. Click a column header to sort by it.</p>
+      </div>
+    </details>
+
     <section class="chart-panel">
       <div class="chart-header">
-        <h2 id="chartTitle">Select a coin to view its 7-day trend</h2>
+        <h2 id="chartTitle">
+          Select a coin to view its 7-day trend
+          <span class="help-wrap">
+            <button class="help-btn" type="button" aria-expanded="false" aria-controls="help-chart" aria-label="What does this chart show?">?</button>
+            <span class="help-popover" id="help-chart" role="tooltip" hidden>
+              This line traces the coin's price for each of the last 7 days. An <strong>upward slope</strong> means
+              the price went up over that stretch; a <strong>downward slope</strong> means it went down. It's
+              historical data only — not a forecast.
+            </span>
+          </span>
+        </h2>
         <span id="chartMeta"></span>
       </div>
       <canvas id="priceChart" height="90"></canvas>
@@ -44,9 +65,36 @@
           <tr>
             <th>#</th>
             <th>Coin</th>
-            <th class="sortable" data-sort="current_price">Price</th>
-            <th class="sortable" data-sort="price_change_percentage_24h">24h</th>
-            <th class="sortable" data-sort="market_cap">Market Cap</th>
+            <th class="sortable" data-sort="current_price">
+              <span class="help-wrap">
+                Price
+                <button class="help-btn" type="button" aria-expanded="false" aria-controls="help-price" aria-label="What does Price mean?">?</button>
+                <span class="help-popover" id="help-price" role="tooltip" hidden>
+                  What one unit of that coin costs right now, in US dollars.
+                </span>
+              </span>
+            </th>
+            <th class="sortable" data-sort="price_change_percentage_24h">
+              <span class="help-wrap">
+                24h
+                <button class="help-btn" type="button" aria-expanded="false" aria-controls="help-24h" aria-label="What does 24h mean?">?</button>
+                <span class="help-popover" id="help-24h" role="tooltip" hidden>
+                  How much the price has changed in the last 24 hours, as a percent.
+                  <strong>Green with a + means it went up</strong>; <strong>red with a − means it went down.</strong>
+                  Example: +5% means the price is 5% higher than it was a day ago.
+                </span>
+              </span>
+            </th>
+            <th class="sortable" data-sort="market_cap">
+              <span class="help-wrap">
+                Market Cap
+                <button class="help-btn" type="button" aria-expanded="false" aria-controls="help-mcap" aria-label="What does Market Cap mean?">?</button>
+                <span class="help-popover" id="help-mcap" role="tooltip" hidden>
+                  The total value of every coin in circulation (price × how many exist). A rough way to compare
+                  how big/established one coin is versus another — bigger usually (not always) means more stable.
+                </span>
+              </span>
+            </th>
           </tr>
         </thead>
         <tbody id="coinBody"></tbody>
@@ -60,6 +108,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3"></script>
+  <script src="help.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

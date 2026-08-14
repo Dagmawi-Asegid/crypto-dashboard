@@ -26,6 +26,14 @@ a {
   color: var(--accent);
 }
 
+code {
+  background: var(--surface-2);
+  color: var(--text);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 0.85em;
+}
+
 .container {
   max-width: 1040px;
   margin: 0 auto;
@@ -526,4 +534,299 @@ footer {
   color: var(--muted);
   font-size: 0.8rem;
   padding: 18px 0;
+}
+
+/* ---------- Help buttons + popovers (plain-English explanations) ---------- */
+
+.help-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  margin-left: 5px;
+  padding: 0;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.help-btn:hover,
+.help-btn[aria-expanded="true"] {
+  color: #0b0e14;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.help-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.help-popover {
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 260px;
+  background: var(--surface-2);
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--text);
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: normal;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.help-popover[hidden] {
+  display: none;
+}
+
+.help-popover strong {
+  color: var(--accent);
+}
+
+/* th elements need to be the positioning context for their popover, since
+   they have their own padding/border that .help-wrap shouldn't inherit */
+.data-table th {
+  position: relative;
+}
+
+.data-table th .help-wrap {
+  position: static;
+}
+
+.data-table th .help-popover {
+  top: 100%;
+  left: 12px;
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 400;
+}
+
+/* ---------- Beginner intro / collapsible explainer box ---------- */
+
+.beginner-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.beginner-box summary {
+  cursor: pointer;
+  padding: 14px 18px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.beginner-box summary::-webkit-details-marker {
+  display: none;
+}
+
+.beginner-box summary::before {
+  content: "▸";
+  color: var(--accent);
+  transition: transform 0.15s;
+}
+
+.beginner-box[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.beginner-box summary:hover {
+  background: rgba(124, 140, 255, 0.06);
+}
+
+.beginner-body {
+  padding: 0 18px 18px;
+  font-size: 0.87rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.beginner-body p {
+  margin: 0 0 12px;
+}
+
+.beginner-body p:last-child {
+  margin-bottom: 0;
+}
+
+.beginner-body ul {
+  margin: 0 0 12px;
+  padding-left: 20px;
+}
+
+.beginner-body li {
+  margin-bottom: 6px;
+}
+
+/* ---------- Glossary cards ---------- */
+
+.glossary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+}
+
+.glossary-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.glossary-card summary {
+  cursor: pointer;
+  padding: 14px 16px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.glossary-card summary::-webkit-details-marker {
+  display: none;
+}
+
+.glossary-card summary::after {
+  content: "+";
+  color: var(--accent);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.glossary-card[open] summary::after {
+  content: "−";
+}
+
+.glossary-card summary:hover {
+  background: rgba(124, 140, 255, 0.06);
+}
+
+.glossary-card .glossary-body {
+  padding: 0 16px 16px;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--text);
+}
+
+.glossary-card .glossary-body p {
+  margin: 0 0 10px;
+}
+
+.glossary-card .glossary-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- Step list (how to get started) ---------- */
+
+.steps-list {
+  counter-reset: step;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.steps-list li {
+  counter-increment: step;
+  position: relative;
+  padding: 4px 0 16px 40px;
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.steps-list li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #0b0e14;
+  font-weight: 700;
+  font-size: 0.82rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.steps-list strong {
+  display: block;
+  margin-bottom: 2px;
+}
+
+/* ---------- Visa / international student cards ---------- */
+
+.visa-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.visa-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.visa-card h3 {
+  margin: 0 0 8px;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.visa-card p {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--text);
+  margin: 0 0 8px;
+}
+
+.visa-card p:last-child {
+  margin-bottom: 0;
+}
+
+.visa-card .source-note {
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+.pill {
+  display: inline-block;
+  background: rgba(124, 140, 255, 0.14);
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 2px 9px;
+  border-radius: 20px;
+  margin-right: 4px;
+  margin-bottom: 4px;
 }
