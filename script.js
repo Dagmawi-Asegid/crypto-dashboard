@@ -46,10 +46,10 @@ function renderTable(list) {
     const row = document.createElement("tr");
     row.innerHTML = `
       <td>${i + 1}</td>
-      <td class="coin-name">
+      <td class="asset-name">
         <img src="${coin.image}" alt="" />
         <span>${coin.name}</span>
-        <span class="coin-symbol">${coin.symbol}</span>
+        <span class="asset-symbol">${coin.symbol}</span>
       </td>
       <td>${formatUsd(coin.current_price)}</td>
       <td class="change ${change >= 0 ? "positive" : "negative"}">

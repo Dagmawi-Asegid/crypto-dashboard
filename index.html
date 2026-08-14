@@ -7,11 +7,24 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <nav class="topnav">
+    <div class="container topnav-row">
+      <div class="brand">📊 Market Dashboard</div>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link active">Crypto</a>
+        <a href="stocks.html" class="nav-link">Stocks</a>
+        <a href="funds.html" class="nav-link">Index Funds</a>
+      </div>
+    </div>
+  </nav>
+
   <header>
     <div class="container header-row">
       <h1>Crypto Market Trends</h1>
-      <input type="text" id="searchInput" placeholder="Filter by name or symbol…" />
-      <span id="lastUpdated" class="last-updated"></span>
+      <div class="header-controls">
+        <input type="text" id="searchInput" placeholder="Filter by name or symbol…" />
+        <span id="lastUpdated" class="last-updated"></span>
+      </div>
     </div>
   </header>
 
@@ -26,7 +39,7 @@
 
     <section>
       <div id="status" class="status">Loading market data…</div>
-      <table id="coinTable" class="coin-table" hidden>
+      <table id="coinTable" class="data-table" hidden>
         <thead>
           <tr>
             <th>#</th>
@@ -42,7 +55,7 @@
   </main>
 
   <footer>
-    <div class="container">Market data via CoinGecko public API</div>
+    <div class="container">Market data via CoinGecko public API · Educational tool, not financial advice</div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>

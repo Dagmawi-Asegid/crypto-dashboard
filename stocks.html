@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stock Watchlist Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="topnav">
+    <div class="container topnav-row">
+      <div class="brand">📊 Market Dashboard</div>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Crypto</a>
+        <a href="stocks.html" class="nav-link active">Stocks</a>
+        <a href="funds.html" class="nav-link">Index Funds</a>
+      </div>
+    </div>
+  </nav>
+
+  <header>
+    <div class="container header-row">
+      <h1>
+        Stock Watchlist
+        <span class="subtitle">Live-ish quotes &amp; price history, powered by Twelve Data</span>
+      </h1>
+      <div class="header-controls">
+        <input type="text" id="stockSearchInput" placeholder="Filter your watchlist…" />
+        <span id="stockLastUpdated" class="last-updated"></span>
+        <button id="settingsBtn" class="btn btn-small" type="button">⚙ API Key</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="banner">
+      <strong>Not financial advice.</strong> Quotes may be delayed and can be inaccurate or stale during API rate limits.
+      This tool is for tracking and education only — always verify prices with your broker before trading.
+    </div>
+
+    <section class="chart-panel">
+      <div class="chart-header">
+        <h2 id="stockChartTitle">Select a stock to view its price history</h2>
+        <span id="stockChartMeta"></span>
+      </div>
+      <div class="chart-range" id="chartRange">
+        <button data-range="1M" class="active">1M</button>
+        <button data-range="3M">3M</button>
+        <button data-range="6M">6M</button>
+        <button data-range="1Y">1Y</button>
+      </div>
+      <canvas id="stockChart" height="90"></canvas>
+    </section>
+
+    <section>
+      <form class="watchlist-add" id="addSymbolForm">
+        <input type="text" id="addSymbolInput" placeholder="Add ticker, e.g. AAPL" maxlength="10" />
+        <button type="submit" class="btn btn-primary">+ Add</button>
+      </form>
+      <p class="watchlist-hint">
+        Your watchlist and API key are stored only in this browser (localStorage) — never sent anywhere but Twelve Data.
+      </p>
+
+      <div id="stockStatus" class="status">Checking for API key…</div>
+      <table id="stockTable" class="data-table" hidden>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Symbol</th>
+            <th class="sortable" data-sort="price">Price</th>
+            <th class="sortable" data-sort="changePercent">Change</th>
+            <th class="sortable" data-sort="open">Open</th>
+            <th class="sortable" data-sort="high">High</th>
+            <th class="sortable" data-sort="low">Low</th>
+            <th class="sortable" data-sort="prevClose">Prev Close</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="stockBody"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">Market data via Twelve Data API · Educational tool, not financial advice</div>
+  </footer>
+
+  <div class="modal-overlay" id="settingsModal" hidden>
+    <div class="modal">
+      <h2>Twelve Data API Key</h2>
+      <p>
+        Free, no credit card: create an account at
+        <a href="https://twelvedata.com/pricing" target="_blank" rel="noopener">twelvedata.com/pricing</a>,
+        pick the Free plan, and paste your key below. It's saved only in this browser.
+      </p>
+      <input type="text" id="apiKeyInput" placeholder="Paste your Twelve Data API key" autocomplete="off" />
+      <div class="modal-actions">
+        <button id="clearKeyBtn" class="btn btn-small btn-danger" type="button">Clear key</button>
+        <button id="saveKeyBtn" class="btn btn-primary" type="button">Save &amp; load quotes</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3"></script>
+  <script src="stocks.js"></script>
+</body>
+</html>
