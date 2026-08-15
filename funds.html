@@ -16,6 +16,7 @@
         <a href="learn.html" class="nav-link">Get Started</a>
         <a href="funds.html" class="nav-link active">Index Funds</a>
         <a href="savings.html" class="nav-link">Savings &amp; CDs</a>
+        <a href="compound.html" class="nav-link">Compound Calculator</a>
       </div>
     </div>
   </nav>
@@ -36,12 +37,60 @@
     </div>
 
     <nav class="jump-nav">
+      <a href="#sp500">S&amp;P 500 chart</a>
       <a href="#glossary">Glossary</a>
       <a href="#start">Getting started</a>
       <a href="#visa">Visa &amp; tax</a>
       <a href="#funds">Fund types</a>
       <a href="#brokers">Brokerages</a>
     </nav>
+
+    <h2 class="section-title" id="sp500" style="margin-top: 0;">
+      S&amp;P 500 (VOO) — live price
+      <span class="help-wrap">
+        <button class="help-btn" type="button" aria-expanded="false" aria-controls="help-voo-chart" aria-label="What does this chart show?">?</button>
+        <span class="help-popover" id="help-voo-chart" role="tooltip" hidden>
+          <code>VOO</code> is Vanguard's fund that tracks the S&amp;P 500 (~500 large US companies) — often used
+          as shorthand for "the US stock market." The dashed line is its <strong>50-day average</strong>, a
+          smoothed-out view of the recent trend that filters out day-to-day noise.
+        </span>
+      </span>
+    </h2>
+    <div class="banner info">
+      <strong>Illustrative example, not a buy/sell signal.</strong> The badge below applies one simple, common
+      rule of thumb (price vs. its 50-day average and 1-year high) to today's data — purely to show <em>how</em>
+      some people read a chart this way. It is not a recommendation, and it cannot predict what happens next.
+    </div>
+
+    <section class="chart-panel">
+      <div class="chart-header">
+        <h2 id="vooChartTitle">VOO — Vanguard S&amp;P 500 ETF</h2>
+        <span id="vooChartMeta"></span>
+      </div>
+      <div class="chart-range" id="vooChartRange">
+        <button data-range="1M">1M</button>
+        <button data-range="3M" class="active">3M</button>
+        <button data-range="6M">6M</button>
+        <button data-range="1Y">1Y</button>
+      </div>
+      <canvas id="vooChart" height="90"></canvas>
+    </section>
+
+    <div id="vooSignal" class="signal-box" hidden></div>
+
+    <div id="vooKeyPrompt" hidden>
+      <div class="watchlist-add">
+        <input type="text" id="vooKeyInput" placeholder="Paste your Twelve Data API key" autocomplete="off" />
+        <button id="vooKeySaveBtn" class="btn btn-primary" type="button">Save &amp; load chart</button>
+      </div>
+      <p class="watchlist-hint">
+        Free, no credit card — get one at
+        <a href="https://twelvedata.com/pricing" target="_blank" rel="noopener">twelvedata.com/pricing</a>.
+        Same key used on the <a href="stocks.html">Stocks</a> page, stored only in this browser.
+      </p>
+    </div>
+
+    <div id="vooStatus" class="status" hidden></div>
 
     <h2 class="section-title" id="glossary">Investing basics — plain English glossary</h2>
     <p class="watchlist-hint" style="margin-top: -6px;">Click any term to expand it.</p>
@@ -349,6 +398,9 @@
     <div class="container">General reference only · Not financial, tax, or legal advice · Verify details directly with each provider and the IRS</div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3"></script>
   <script src="help.js"></script>
+  <script src="funds.js"></script>
 </body>
 </html>

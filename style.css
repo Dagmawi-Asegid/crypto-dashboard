@@ -986,3 +986,191 @@ footer {
   margin-right: 4px;
   margin-bottom: 4px;
 }
+
+/* ---------- Buy/wait signal box (funds page — VOO chart) ---------- */
+
+.signal-box {
+  background: var(--surface);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin-bottom: 24px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.signal-badge {
+  flex-shrink: 0;
+  padding: 6px 13px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.signal-badge.buyish {
+  background: rgba(31, 224, 138, 0.14);
+  color: var(--green);
+  border: 1px solid rgba(31, 224, 138, 0.35);
+}
+
+.signal-badge.waitish {
+  background: rgba(255, 77, 109, 0.14);
+  color: var(--red);
+  border: 1px solid rgba(255, 77, 109, 0.35);
+}
+
+.signal-badge.neutral {
+  background: rgba(162, 155, 196, 0.14);
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+
+.signal-text {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--text);
+  flex: 1;
+  min-width: 240px;
+}
+
+.signal-text .signal-stat {
+  display: block;
+  color: var(--muted);
+  font-size: 0.8rem;
+  margin-top: 8px;
+}
+
+/* ---------- Compound interest calculator page ---------- */
+
+.calc-grid {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 24px;
+  align-items: start;
+  margin-bottom: 28px;
+}
+
+@media (max-width: 760px) {
+  .calc-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.calc-form {
+  background: var(--surface);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.calc-field {
+  margin-bottom: 16px;
+}
+
+.calc-field:last-child {
+  margin-bottom: 0;
+}
+
+.calc-field label {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.calc-field input,
+.calc-field select {
+  width: 100%;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 9px 12px;
+  border-radius: 6px;
+  font-size: 0.92rem;
+  font-family: inherit;
+}
+
+.calc-field input:focus,
+.calc-field select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.calc-presets {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.calc-presets button {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-size: 0.74rem;
+  cursor: pointer;
+}
+
+.calc-presets button:hover,
+.calc-presets button.active {
+  color: var(--text);
+  border-color: var(--accent);
+  background: rgba(139, 92, 246, 0.1);
+}
+
+.result-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 640px) {
+  .result-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.result-card {
+  background: var(--surface);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+
+.result-card .result-label {
+  font-size: 0.76rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.result-card .result-value {
+  font-size: 1.55rem;
+  font-weight: 700;
+  margin-top: 6px;
+}
+
+.result-card.contributed {
+  border-left-color: var(--accent-2);
+}
+
+.result-card.interest {
+  border-left-color: var(--green);
+}
+
+.result-card.interest .result-value {
+  color: var(--green);
+}
