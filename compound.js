@@ -9,7 +9,7 @@ const resultFutureEl = document.getElementById("resultFuture");
 const resultContributedEl = document.getElementById("resultContributed");
 const resultInterestEl = document.getElementById("resultInterest");
 const resultRealFutureEl = document.getElementById("resultRealFuture");
-const resultInflationLossEl = document.getElementById("resultInflationLoss");
+const resultRealValueEl = document.getElementById("resultRealValue");
 const resultYearsLabelEl = document.getElementById("resultYearsLabel");
 const fvHeroEl = document.getElementById("fvHero");
 const splitContributedEl = document.getElementById("splitContributed");
@@ -63,7 +63,7 @@ function render() {
   resultContributedEl.textContent = formatUsd(last.contributed);
   resultInterestEl.textContent = formatUsd(last.interest);
   resultRealFutureEl.textContent = formatUsd(last.real);
-  resultInflationLossEl.textContent = formatUsd(last.balance - last.real);
+  resultRealValueEl.textContent = formatUsd(last.real);
   resultYearsLabelEl.textContent = years;
 
   // Give the hero number a quick pulse whenever it changes, for a bit of life.
