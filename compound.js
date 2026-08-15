@@ -7,6 +7,7 @@ const presetsEl = document.getElementById("ratePresets");
 
 const resultFutureEl = document.getElementById("resultFuture");
 const resultContributedEl = document.getElementById("resultContributed");
+const resultInterestEl = document.getElementById("resultInterest");
 const resultRealFutureEl = document.getElementById("resultRealFuture");
 const resultRealValueEl = document.getElementById("resultRealValue");
 const resultRealGainEl = document.getElementById("resultRealGain");
@@ -61,6 +62,7 @@ function render() {
 
   resultFutureEl.textContent = formatUsd(last.balance);
   resultContributedEl.textContent = formatUsd(last.contributed);
+  resultInterestEl.textContent = formatUsd(last.interest);
   resultRealFutureEl.textContent = formatUsd(last.real);
   resultRealValueEl.textContent = formatUsd(last.real);
   const realGain = last.real - last.contributed;

@@ -1289,6 +1289,16 @@ footer {
   grid-template-columns: repeat(3, 1fr);
 }
 
+.result-row-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 900px) {
+  .result-row-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 760px) {
   .result-row-3 {
     grid-template-columns: repeat(2, 1fr);
@@ -1352,10 +1362,6 @@ footer {
   color: var(--green);
 }
 
-.result-card.interest .result-value.negative {
-  color: var(--red);
-}
-
 .result-card.contributed .result-value {
   color: var(--accent-2);
 }
@@ -1367,4 +1373,17 @@ footer {
 
 .result-card.inflation .result-value {
   color: var(--accent-3);
+}
+
+.result-card.gain {
+  border-left-color: var(--accent);
+  background: linear-gradient(135deg, rgba(227, 178, 60, 0.14), var(--surface));
+}
+
+.result-card.gain .result-value {
+  color: var(--accent);
+}
+
+.result-card.gain .result-value.negative {
+  color: var(--red);
 }
