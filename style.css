@@ -1352,6 +1352,10 @@ footer {
   color: var(--green);
 }
 
+.result-card.interest .result-value.negative {
+  color: var(--red);
+}
+
 .result-card.contributed .result-value {
   color: var(--accent-2);
 }

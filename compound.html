@@ -117,15 +117,24 @@
             <div class="result-label">Total contributed</div>
             <div class="result-value" id="resultContributed">—</div>
           </div>
-          <div class="result-card interest">
-            <div class="result-icon">🌱</div>
-            <div class="result-label">Total interest earned</div>
-            <div class="result-value" id="resultInterest">—</div>
-          </div>
           <div class="result-card inflation">
             <div class="result-icon">🛒</div>
             <div class="result-label">Value after inflation</div>
             <div class="result-value" id="resultRealValue">—</div>
+          </div>
+          <div class="result-card interest">
+            <div class="result-icon">🌱</div>
+            <div class="result-label">
+              Net gain (today's $)
+              <span class="help-wrap">
+                <button class="help-btn" type="button" aria-expanded="false" aria-controls="help-net-gain" aria-label="What does net gain mean here?">?</button>
+                <span class="help-popover" id="help-net-gain" role="tooltip" hidden>
+                  Value after inflation minus what you contributed — how much real purchasing power you gained
+                  on top of your own money, after inflation eats into the nominal interest.
+                </span>
+              </span>
+            </div>
+            <div class="result-value" id="resultRealGain">—</div>
           </div>
         </div>
 

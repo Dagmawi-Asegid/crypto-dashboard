@@ -27,8 +27,9 @@ A small, no-build-step market dashboard with six pages:
 - **`compound.html` — Compound Calculator.** A future value / compound interest calculator: enter a starting
   amount, monthly contribution, annual interest rate (with quick presets for a savings-account rate, a
   moderate rate, and the S&P 500's historical average), a number of years, and an annual inflation rate, and
-  it projects the ending balance — both in nominal dollars and re-priced into today's purchasing power — with
-  a chart breaking down total contributions vs. interest earned vs. the inflation-adjusted value. Assumes a
+  it projects the ending balance in nominal dollars, its value re-priced into today's purchasing power, total
+  contributed, and the net real gain on top of what you put in — plus a chart breaking down contributions vs.
+  interest earned vs. the inflation-adjusted value over time. Assumes a
   constant rate of return and constant inflation for illustration only — nothing on this page is fetched from
   an API.
 

@@ -7,9 +7,9 @@ const presetsEl = document.getElementById("ratePresets");
 
 const resultFutureEl = document.getElementById("resultFuture");
 const resultContributedEl = document.getElementById("resultContributed");
-const resultInterestEl = document.getElementById("resultInterest");
 const resultRealFutureEl = document.getElementById("resultRealFuture");
 const resultRealValueEl = document.getElementById("resultRealValue");
+const resultRealGainEl = document.getElementById("resultRealGain");
 const resultYearsLabelEl = document.getElementById("resultYearsLabel");
 const fvHeroEl = document.getElementById("fvHero");
 const splitContributedEl = document.getElementById("splitContributed");
@@ -61,9 +61,11 @@ function render() {
 
   resultFutureEl.textContent = formatUsd(last.balance);
   resultContributedEl.textContent = formatUsd(last.contributed);
-  resultInterestEl.textContent = formatUsd(last.interest);
   resultRealFutureEl.textContent = formatUsd(last.real);
   resultRealValueEl.textContent = formatUsd(last.real);
+  const realGain = last.real - last.contributed;
+  resultRealGainEl.textContent = formatUsd(realGain);
+  resultRealGainEl.classList.toggle("negative", realGain < 0);
   resultYearsLabelEl.textContent = years;
 
   // Give the hero number a quick pulse whenever it changes, for a bit of life.
