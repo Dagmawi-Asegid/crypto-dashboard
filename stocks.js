@@ -229,8 +229,8 @@ async function loadChart(symbol) {
           {
             label: `${symbol} / USD`,
             data: points,
-            borderColor: "#22d3ee",
-            backgroundColor: "rgba(34,211,238,0.18)",
+            borderColor: "#3b82f6",
+            backgroundColor: "rgba(59,130,246,0.18)",
             fill: true,
             tension: 0.2,
             pointRadius: 0,
@@ -244,12 +244,12 @@ async function loadChart(symbol) {
           x: {
             type: "time",
             time: { unit: activeRange === "1Y" ? "month" : "week" },
-            grid: { color: "rgba(139,92,246,0.15)" },
-            ticks: { color: "#a29bc4" },
+            grid: { color: "rgba(227,178,60,0.15)" },
+            ticks: { color: "#98a1b8" },
           },
           y: {
-            grid: { color: "rgba(139,92,246,0.15)" },
-            ticks: { color: "#a29bc4" },
+            grid: { color: "rgba(227,178,60,0.15)" },
+            ticks: { color: "#98a1b8" },
           },
         },
         plugins: { legend: { display: false } },

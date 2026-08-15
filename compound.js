@@ -7,6 +7,12 @@ const presetsEl = document.getElementById("ratePresets");
 const resultFutureEl = document.getElementById("resultFuture");
 const resultContributedEl = document.getElementById("resultContributed");
 const resultInterestEl = document.getElementById("resultInterest");
+const resultYearsLabelEl = document.getElementById("resultYearsLabel");
+const fvHeroEl = document.getElementById("fvHero");
+const splitContributedEl = document.getElementById("splitContributed");
+const splitInterestEl = document.getElementById("splitInterest");
+const splitContributedPctEl = document.getElementById("splitContributedPct");
+const splitInterestPctEl = document.getElementById("splitInterestPct");
 const ctx = document.getElementById("growthChart");
 
 let chart;
@@ -49,6 +55,19 @@ function render() {
   resultFutureEl.textContent = formatUsd(last.balance);
   resultContributedEl.textContent = formatUsd(last.contributed);
   resultInterestEl.textContent = formatUsd(last.interest);
+  resultYearsLabelEl.textContent = years;
+
+  // Give the hero number a quick pulse whenever it changes, for a bit of life.
+  fvHeroEl.classList.remove("pulse");
+  void fvHeroEl.offsetWidth; // restart the CSS animation
+  fvHeroEl.classList.add("pulse");
+
+  const contributedPct = last.balance > 0 ? (last.contributed / last.balance) * 100 : 100;
+  const interestPct = 100 - contributedPct;
+  splitContributedEl.style.width = `${contributedPct}%`;
+  splitInterestEl.style.width = `${interestPct}%`;
+  splitContributedPctEl.textContent = contributedPct >= 12 ? `${Math.round(contributedPct)}%` : "";
+  splitInterestPctEl.textContent = interestPct >= 12 ? `${Math.round(interestPct)}%` : "";
 
   const labels = points.map((p) => `Year ${p.year}`);
   const contributedData = points.map((p) => Math.round(p.contributed));
@@ -63,8 +82,8 @@ function render() {
         {
           label: "Total contributed",
           data: contributedData,
-          borderColor: "#22d3ee",
-          backgroundColor: "rgba(34,211,238,0.35)",
+          borderColor: "#3b82f6",
+          backgroundColor: "rgba(59,130,246,0.35)",
           fill: true,
           stack: "growth",
           tension: 0.15,
@@ -74,8 +93,8 @@ function render() {
         {
           label: "Interest earned",
           data: interestData,
-          borderColor: "#1fe08a",
-          backgroundColor: "rgba(31,224,138,0.35)",
+          borderColor: "#22c55e",
+          backgroundColor: "rgba(34,197,94,0.35)",
           fill: true,
           stack: "growth",
           tension: 0.15,
@@ -88,13 +107,13 @@ function render() {
       responsive: true,
       scales: {
         x: {
-          grid: { color: "rgba(139,92,246,0.15)" },
-          ticks: { color: "#a29bc4", maxTicksLimit: 10 },
+          grid: { color: "rgba(227,178,60,0.15)" },
+          ticks: { color: "#98a1b8", maxTicksLimit: 10 },
         },
         y: {
           stacked: true,
-          grid: { color: "rgba(139,92,246,0.15)" },
-          ticks: { color: "#a29bc4", callback: (v) => formatUsd(v) },
+          grid: { color: "rgba(227,178,60,0.15)" },
+          ticks: { color: "#98a1b8", callback: (v) => formatUsd(v) },
         },
       },
       plugins: {
@@ -102,7 +121,7 @@ function render() {
           display: true,
           position: "top",
           align: "end",
-          labels: { color: "#a29bc4", boxWidth: 14, font: { size: 11 } },
+          labels: { color: "#98a1b8", boxWidth: 14, font: { size: 11 } },
         },
         tooltip: {
           callbacks: {

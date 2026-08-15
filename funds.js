@@ -97,8 +97,8 @@ function renderChart(range) {
         {
           label: "VOO price",
           data: pricePoints,
-          borderColor: "#22d3ee",
-          backgroundColor: "rgba(34,211,238,0.15)",
+          borderColor: "#3b82f6",
+          backgroundColor: "rgba(59,130,246,0.15)",
           fill: true,
           tension: 0.2,
           pointRadius: 0,
@@ -122,12 +122,12 @@ function renderChart(range) {
         x: {
           type: "time",
           time: { unit: range === "1Y" ? "month" : "week" },
-          grid: { color: "rgba(139,92,246,0.15)" },
-          ticks: { color: "#a29bc4" },
+          grid: { color: "rgba(227,178,60,0.15)" },
+          ticks: { color: "#98a1b8" },
         },
         y: {
-          grid: { color: "rgba(139,92,246,0.15)" },
-          ticks: { color: "#a29bc4" },
+          grid: { color: "rgba(227,178,60,0.15)" },
+          ticks: { color: "#98a1b8" },
         },
       },
       plugins: {
@@ -135,7 +135,7 @@ function renderChart(range) {
           display: true,
           position: "top",
           align: "end",
-          labels: { color: "#a29bc4", boxWidth: 14, font: { size: 11 } },
+          labels: { color: "#98a1b8", boxWidth: 14, font: { size: 11 } },
         },
       },
     },

@@ -61,9 +61,9 @@
           </label>
           <input type="number" id="annualRate" value="8" min="0" max="100" step="0.1" />
           <div class="calc-presets" id="ratePresets">
-            <button type="button" data-rate="4.5">HYSA ~4.5%</button>
-            <button type="button" data-rate="8" class="active">Moderate 8%</button>
-            <button type="button" data-rate="10">S&amp;P 500 avg ~10%</button>
+            <button type="button" data-rate="4.5">🏦 HYSA ~4.5%</button>
+            <button type="button" data-rate="8" class="active">⚖️ Moderate 8%</button>
+            <button type="button" data-rate="10">📈 S&amp;P 500 avg ~10%</button>
           </div>
         </div>
         <div class="calc-field">
@@ -76,16 +76,33 @@
       </form>
 
       <div>
-        <div class="result-row">
-          <div class="result-card">
-            <div class="result-label">Future value</div>
-            <div class="result-value" id="resultFuture">—</div>
+        <div class="fv-hero" id="fvHero">
+          <div class="fv-hero-icon">💰</div>
+          <div class="fv-hero-body">
+            <div class="fv-hero-label">Future value after <span id="resultYearsLabel">20</span> years</div>
+            <div class="fv-hero-value" id="resultFuture">—</div>
           </div>
+        </div>
+
+        <div class="split-bar-wrap">
+          <div class="split-bar" id="splitBar">
+            <div class="split-seg contributed" id="splitContributed"><span id="splitContributedPct"></span></div>
+            <div class="split-seg interest" id="splitInterest"><span id="splitInterestPct"></span></div>
+          </div>
+          <div class="split-bar-legend">
+            <span><i class="dot contributed"></i>What you put in</span>
+            <span><i class="dot interest"></i>What compounding added</span>
+          </div>
+        </div>
+
+        <div class="result-row">
           <div class="result-card contributed">
+            <div class="result-icon">💵</div>
             <div class="result-label">Total contributed</div>
             <div class="result-value" id="resultContributed">—</div>
           </div>
           <div class="result-card interest">
+            <div class="result-icon">🌱</div>
             <div class="result-label">Total interest earned</div>
             <div class="result-value" id="resultInterest">—</div>
           </div>
