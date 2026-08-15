@@ -26,9 +26,11 @@ A small, no-build-step market dashboard with six pages:
   single-stock-vs-mutual-fund primer. Nothing on this page is fetched from an API.
 - **`compound.html` — Compound Calculator.** A future value / compound interest calculator: enter a starting
   amount, monthly contribution, annual interest rate (with quick presets for a savings-account rate, a
-  moderate rate, and the S&P 500's historical average), and a number of years, and it projects the ending
-  balance with a chart breaking down total contributions vs. interest earned. Assumes a constant rate of
-  return for illustration only — nothing on this page is fetched from an API.
+  moderate rate, and the S&P 500's historical average), a number of years, and an annual inflation rate, and
+  it projects the ending balance — both in nominal dollars and re-priced into today's purchasing power — with
+  a chart breaking down total contributions vs. interest earned vs. the inflation-adjusted value. Assumes a
+  constant rate of return and constant inflation for illustration only — nothing on this page is fetched from
+  an API.
 
 Every page has small "?" buttons next to jargon (percent changes, chart ranges, table columns, etc.) that pop
 up a short plain-English explanation on click — built for someone with zero background. Shared logic lives in

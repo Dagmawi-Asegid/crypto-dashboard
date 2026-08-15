@@ -1183,6 +1183,18 @@ footer {
   transition: opacity 0.15s;
 }
 
+.fv-hero-real {
+  position: relative;
+  margin-top: 6px;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.fv-hero-real #resultRealFuture {
+  color: var(--accent-3);
+  font-weight: 700;
+}
+
 .fv-hero.pulse {
   animation: fv-pulse 0.5s ease;
 }
@@ -1273,6 +1285,16 @@ footer {
   margin-bottom: 24px;
 }
 
+.result-row-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 760px) {
+  .result-row-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 640px) {
   .result-row {
     grid-template-columns: 1fr;
@@ -1332,4 +1354,13 @@ footer {
 
 .result-card.contributed .result-value {
   color: var(--accent-2);
+}
+
+.result-card.inflation {
+  border-left-color: var(--accent-3);
+  background: linear-gradient(135deg, rgba(226, 103, 58, 0.12), var(--surface));
+}
+
+.result-card.inflation .result-value {
+  color: var(--accent-3);
 }

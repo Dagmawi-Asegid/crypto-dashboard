@@ -2,11 +2,14 @@ const startInput = document.getElementById("startAmount");
 const contributionInput = document.getElementById("monthlyContribution");
 const rateInput = document.getElementById("annualRate");
 const yearsInput = document.getElementById("years");
+const inflationInput = document.getElementById("inflationRate");
 const presetsEl = document.getElementById("ratePresets");
 
 const resultFutureEl = document.getElementById("resultFuture");
 const resultContributedEl = document.getElementById("resultContributed");
 const resultInterestEl = document.getElementById("resultInterest");
+const resultRealFutureEl = document.getElementById("resultRealFuture");
+const resultInflationLossEl = document.getElementById("resultInflationLoss");
 const resultYearsLabelEl = document.getElementById("resultYearsLabel");
 const fvHeroEl = document.getElementById("fvHero");
 const splitContributedEl = document.getElementById("splitContributed");
@@ -27,17 +30,20 @@ function formatUsd(n) {
 
 // Simulates month-by-month, snapshotting balance/contributed at each year boundary.
 // Contributions are added at the end of each month, so a 0% rate just sums deposits.
-function simulate(start, monthlyContribution, annualRatePct, years) {
+// "real" is the same balance re-priced into today's purchasing power, discounted by inflation.
+function simulate(start, monthlyContribution, annualRatePct, years, inflationRatePct) {
   const r = annualRatePct / 100 / 12;
   let balance = start;
   let contributed = start;
-  const points = [{ year: 0, balance, contributed, interest: balance - contributed }];
+  const points = [{ year: 0, balance, contributed, interest: balance - contributed, real: balance }];
 
   for (let m = 1; m <= years * 12; m++) {
     balance = balance * (1 + r) + monthlyContribution;
     contributed += monthlyContribution;
     if (m % 12 === 0) {
-      points.push({ year: m / 12, balance, contributed, interest: balance - contributed });
+      const year = m / 12;
+      const real = balance / Math.pow(1 + inflationRatePct / 100, year);
+      points.push({ year, balance, contributed, interest: balance - contributed, real });
     }
   }
   return points;
@@ -48,13 +54,16 @@ function render() {
   const monthlyContribution = Math.max(0, parseFloat(contributionInput.value) || 0);
   const annualRate = Math.max(0, parseFloat(rateInput.value) || 0);
   const years = Math.min(60, Math.max(1, parseInt(yearsInput.value, 10) || 1));
+  const inflationRate = Math.max(0, parseFloat(inflationInput.value) || 0);
 
-  const points = simulate(start, monthlyContribution, annualRate, years);
+  const points = simulate(start, monthlyContribution, annualRate, years, inflationRate);
   const last = points[points.length - 1];
 
   resultFutureEl.textContent = formatUsd(last.balance);
   resultContributedEl.textContent = formatUsd(last.contributed);
   resultInterestEl.textContent = formatUsd(last.interest);
+  resultRealFutureEl.textContent = formatUsd(last.real);
+  resultInflationLossEl.textContent = formatUsd(last.balance - last.real);
   resultYearsLabelEl.textContent = years;
 
   // Give the hero number a quick pulse whenever it changes, for a bit of life.
@@ -72,6 +81,7 @@ function render() {
   const labels = points.map((p) => `Year ${p.year}`);
   const contributedData = points.map((p) => Math.round(p.contributed));
   const interestData = points.map((p) => Math.round(p.interest));
+  const realData = points.map((p) => Math.round(p.real));
 
   if (chart) chart.destroy();
   chart = new Chart(ctx, {
@@ -100,6 +110,17 @@ function render() {
           tension: 0.15,
           pointRadius: 0,
           borderWidth: 2,
+        },
+        {
+          label: "In today's dollars (after inflation)",
+          data: realData,
+          borderColor: "#e2673a",
+          borderDash: [6, 4],
+          stack: "real",
+          fill: false,
+          tension: 0.15,
+          pointRadius: 0,
+          borderWidth: 2.5,
         },
       ],
     },
@@ -142,7 +163,7 @@ presetsEl.addEventListener("click", (e) => {
   render();
 });
 
-[startInput, contributionInput, rateInput, yearsInput].forEach((input) => {
+[startInput, contributionInput, rateInput, yearsInput, inflationInput].forEach((input) => {
   input.addEventListener("input", () => {
     presetsEl.querySelectorAll("button").forEach((b) => b.classList.remove("active"));
     render();

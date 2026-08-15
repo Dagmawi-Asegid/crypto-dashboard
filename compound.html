@@ -32,9 +32,10 @@
 
   <main class="container">
     <div class="banner">
-      <strong>Illustrative math only — not a guarantee.</strong> This assumes a constant rate of return, which
-      real investments never actually deliver year to year. It's meant to show how compounding works, not to
-      predict what your money will actually be worth.
+      <strong>Illustrative math only — not a guarantee.</strong> This assumes a constant rate of return and a
+      constant inflation rate, neither of which real economies ever actually deliver year to year. It's meant
+      to show how compounding — and inflation's effect on it — works, not to predict what your money will
+      actually be worth.
     </div>
 
     <div class="calc-grid">
@@ -70,6 +71,20 @@
           <label for="years">Years to grow</label>
           <input type="number" id="years" value="20" min="1" max="60" step="1" />
         </div>
+        <div class="calc-field">
+          <label for="inflationRate">
+            Annual inflation rate (%)
+            <span class="help-wrap">
+              <button class="help-btn" type="button" aria-expanded="false" aria-controls="help-inflation" aria-label="What inflation rate should I use?">?</button>
+              <span class="help-popover" id="help-inflation" role="tooltip" hidden>
+                US inflation (CPI) has averaged roughly 3%/year over the long run, though it swings well above
+                and below that in any given year. This is what erodes purchasing power — it's why "$1M in 30
+                years" buys less than $1M today.
+              </span>
+            </span>
+          </label>
+          <input type="number" id="inflationRate" value="3" min="0" max="20" step="0.1" />
+        </div>
         <p class="watchlist-hint" style="margin: 0;">
           Assumes monthly compounding, with your contribution added at the end of each month.
         </p>
@@ -81,6 +96,7 @@
           <div class="fv-hero-body">
             <div class="fv-hero-label">Future value after <span id="resultYearsLabel">20</span> years</div>
             <div class="fv-hero-value" id="resultFuture">—</div>
+            <div class="fv-hero-real">≈ <span id="resultRealFuture">—</span> in today's dollars, after inflation</div>
           </div>
         </div>
 
@@ -95,7 +111,7 @@
           </div>
         </div>
 
-        <div class="result-row">
+        <div class="result-row result-row-3">
           <div class="result-card contributed">
             <div class="result-icon">💵</div>
             <div class="result-label">Total contributed</div>
@@ -106,6 +122,11 @@
             <div class="result-label">Total interest earned</div>
             <div class="result-value" id="resultInterest">—</div>
           </div>
+          <div class="result-card inflation">
+            <div class="result-icon">🛒</div>
+            <div class="result-label">Lost to inflation</div>
+            <div class="result-value" id="resultInflationLoss">—</div>
+          </div>
         </div>
 
         <section class="chart-panel">
@@ -115,9 +136,10 @@
               <span class="help-wrap">
                 <button class="help-btn" type="button" aria-expanded="false" aria-controls="help-growth-chart" aria-label="What does this chart show?">?</button>
                 <span class="help-popover" id="help-growth-chart" role="tooltip" hidden>
-                  Each bar is split into what you put in (contributions) versus what growth added on top
-                  (interest). Notice how the interest slice grows faster in later years — that's compounding:
-                  growth earning more growth.
+                  The filled area splits into what you put in (contributions) versus what growth added on top
+                  (interest) — notice how the interest slice grows faster in later years, that's compounding.
+                  The dashed line is the same balance re-priced into today's dollars, after inflation — the gap
+                  between the line and the top of the area is purchasing power lost to inflation.
                 </span>
               </span>
             </h2>
