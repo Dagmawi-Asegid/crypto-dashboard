@@ -1,12 +1,16 @@
 # Market Dashboard
 
-A small, no-build-step market dashboard with three pages:
+A small, no-build-step market dashboard with five pages:
 
 - **`index.html` — Crypto.** Top 20 coins by market cap via the CoinGecko public API (no key needed), with a
   click-through 7-day price chart.
 - **`stocks.html` — Stocks.** A customizable stock watchlist (live quotes + price history charts) powered by
   the [Twelve Data](https://twelvedata.com/pricing) API. Requires a free API key (no credit card) — the app
   will prompt for it and store it only in your browser's `localStorage`. It is never written to this repo.
+- **`learn.html` — Get Started.** A beginner-trader guide: a step-by-step walkthrough of how to actually start
+  investing, a comparison of account types (brokerage, Roth IRA, Traditional IRA, 401(k)/403(b), HSA,
+  custodial), plain-English trading terms (market/limit orders, bid/ask, dividends, volatility), and common
+  beginner mistakes. Nothing on this page is fetched from an API.
 - **`funds.html` — Index Funds & Brokerages.** A beginner-friendly educational reference page: a plain-English
   investing glossary, what common index funds (S&P 500, total market, bonds, international, etc.) track, a
   general feature comparison of major US brokerages, and a dedicated section on investing as an international
@@ -14,6 +18,10 @@ A small, no-build-step market dashboard with three pages:
   treatment works for capital gains and dividends, sourced from IRS.gov and Sprintax. Clearly labeled as
   general information, not personalized financial/tax/legal advice — nothing on this page is fetched from an
   API.
+- **`savings.html` — Savings & CDs.** A money-management reference page: how to match cash to a timeline,
+  high-yield savings accounts, certificates of deposit (including CD laddering), Treasury bills, a
+  side-by-side comparison table (checking, HYSA, CD, T-bill, money market fund, stocks/funds), and a
+  single-stock-vs-mutual-fund primer. Nothing on this page is fetched from an API.
 
 Every page has small "?" buttons next to jargon (percent changes, chart ranges, table columns, etc.) that pop
 up a short plain-English explanation on click — built for someone with zero background. Shared logic lives in

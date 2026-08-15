@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Started Investing — Beginner Guide</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="topnav">
+    <div class="container topnav-row">
+      <div class="brand">📊 <span class="brand-text">Market Dashboard</span></div>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Crypto</a>
+        <a href="stocks.html" class="nav-link">Stocks</a>
+        <a href="learn.html" class="nav-link active">Get Started</a>
+        <a href="funds.html" class="nav-link">Index Funds</a>
+        <a href="savings.html" class="nav-link">Savings &amp; CDs</a>
+      </div>
+    </div>
+  </nav>
+
+  <header>
+    <div class="container header-row">
+      <h1>
+        Get Started Investing
+        <span class="subtitle">A zero-background guide for total beginners — general education, not personalized advice</span>
+      </h1>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="banner">
+      <strong>Educational only — not financial, tax, or legal advice.</strong> This page explains how investing
+      generally works so unfamiliar terms stop being scary. It doesn't tell you what to buy.
+    </div>
+
+    <details class="beginner-box">
+      <summary>New here? 60-second overview (click to expand)</summary>
+      <div class="beginner-body">
+        <p><strong>Investing</strong> means putting money into something (like a stock or fund) hoping it grows
+        in value over years — different from a <strong>savings account</strong>, which is for money you might
+        need soon (see <a href="savings.html">Money Management &amp; Savings</a>).</p>
+        <p>You can't just "buy a stock" out of thin air — you first open an <strong>account</strong> at a
+        <strong>brokerage</strong> (a company that connects you to the stock market), put money into it, then
+        use that money to buy. This page walks through that process and the account types you'll run into.</p>
+      </div>
+    </details>
+
+    <nav class="jump-nav">
+      <a href="#steps">How to start</a>
+      <a href="#accounts">Account types</a>
+      <a href="#terms">Trading terms</a>
+      <a href="#mistakes">Common mistakes</a>
+    </nav>
+
+    <h2 class="section-title" id="steps">How to start — step by step</h2>
+    <ol class="steps-list">
+      <li><strong>Build a small emergency fund first.</strong> A cushion of cash (often ~3–6 months of
+      expenses) in a regular or high-yield savings account, before investing money you might need on short
+      notice. See <a href="savings.html">Money Management &amp; Savings</a>.</li>
+      <li><strong>Get clear on your goal and timeline.</strong> Saving for retirement decades away? A house in
+      5 years? General long-term growth? The right account and how much risk makes sense both depend on this.</li>
+      <li><strong>Pick an account type.</strong> Retirement accounts (like a Roth IRA) get tax advantages but
+      restrict withdrawals; a regular brokerage account is fully flexible but has no special tax treatment.
+      See the comparison below.</li>
+      <li><strong>Choose a brokerage and open the account.</strong> Most major US brokerages are free to open,
+      with no minimum. See the brokerage comparison on the <a href="funds.html#brokers">Index Funds page</a>.</li>
+      <li><strong>Fund the account.</strong> Link a bank account and transfer money in — this step alone
+      doesn't buy anything yet, it just moves cash into the account.</li>
+      <li><strong>Choose what to buy.</strong> A broad, low-cost index fund (like one tracking the S&amp;P 500)
+      is a common beginner starting point — instantly diversified across hundreds of companies in one purchase,
+      instead of betting on a single company. See <a href="funds.html#funds">common index funds</a>.</li>
+      <li><strong>Automate it and leave it alone.</strong> Investing a fixed amount on a regular schedule
+      (dollar-cost averaging) and staying invested through ups and downs is a common long-term approach — no
+      need to time the market.</li>
+    </ol>
+
+    <h2 class="section-title" id="accounts">
+      Which account should I use?
+      <span class="help-wrap">
+        <button class="help-btn" type="button" aria-expanded="false" aria-controls="help-accounts" aria-label="Why does the account type matter?">?</button>
+        <span class="help-popover" id="help-accounts" role="tooltip" hidden>
+          The account is just the "container" your investments sit in — it determines the tax rules, not what
+          you're allowed to buy. Figures below are general 2025 US guidelines; confirm current numbers with
+          the IRS or your brokerage, and check eligibility for your situation (see the
+          <a href="funds.html#visa">visa &amp; tax section</a> if you're on a visa).
+        </span>
+      </span>
+    </h2>
+    <div class="fund-grid">
+      <div class="fund-card">
+        <div class="fund-category">Taxable · Fully Flexible</div>
+        <h3>Brokerage account</h3>
+        <p>A regular investing account with no contribution limits and no withdrawal restrictions — deposit or
+        withdraw anytime. You pay tax each year on dividends and on gains when you sell. Good default if you
+        might need the money before retirement, or you've maxed out retirement accounts.</p>
+      </div>
+
+      <div class="fund-card">
+        <div class="fund-category">Retirement · Tax-Free Growth</div>
+        <h3>Roth IRA</h3>
+        <p>You contribute money you've already paid tax on; it then grows and can be withdrawn <strong>tax-free
+        in retirement</strong>. 2025 limit: $7,000/yr ($8,000 if 50+), and requires US earned income. Income
+        limits apply at higher earnings. Contributions (not earnings) can generally be withdrawn early
+        penalty-free.</p>
+      </div>
+
+      <div class="fund-card">
+        <div class="fund-category">Retirement · Tax Deferred</div>
+        <h3>Traditional IRA</h3>
+        <p>Contributions may reduce your taxable income now; the money is taxed later when withdrawn in
+        retirement instead. Same 2025 contribution limit as a Roth ($7,000/yr, $8,000 if 50+). Early
+        withdrawals before 59½ generally trigger a 10% penalty plus tax, with some exceptions.</p>
+      </div>
+
+      <div class="fund-card">
+        <div class="fund-category">Retirement · Employer Plan</div>
+        <h3>401(k) / 403(b)</h3>
+        <p>Offered through a job; contributions come straight out of your paycheck, before you ever see the
+        money. Often includes an <strong>employer match</strong> — free money if you contribute enough to get
+        it, commonly the first thing to prioritize before other investing. 2025 limit: $23,500/yr.</p>
+      </div>
+
+      <div class="fund-card">
+        <div class="fund-category">Bonus · Triple Tax Advantage</div>
+        <h3>HSA (Health Savings Account)</h3>
+        <p>Only available with a high-deductible health plan. Contributions are tax-deductible, growth is
+        tax-free, and withdrawals are tax-free for medical expenses — often invested like a retirement account
+        once a cash cushion is met.</p>
+      </div>
+
+      <div class="fund-card">
+        <div class="fund-category">Kids · Custodial</div>
+        <h3>Custodial account (UTMA/UGMA)</h3>
+        <p>Lets an adult invest on behalf of a minor; the minor legally owns it and gains full control at the
+        age of majority (18–21, by state). No contribution limit, but no special tax break either — taxed
+        similarly to a regular brokerage account, with some income taxed at the child's rate.</p>
+      </div>
+    </div>
+    <p class="watchlist-hint">
+      A common beginner order: get any full 401(k) employer match first, then a Roth or Traditional IRA, then a
+      regular brokerage account for anything beyond that — but the right order depends on your income, tax
+      situation, and goals.
+    </p>
+
+    <h2 class="section-title" id="terms">Trading terms worth knowing</h2>
+    <div class="glossary-grid">
+      <details class="glossary-card">
+        <summary>Market order</summary>
+        <div class="glossary-body">
+          <p>"Buy/sell right now, at whatever the current price is." Fills almost instantly but you don't
+          control the exact price you get.</p>
+        </div>
+      </details>
+
+      <details class="glossary-card">
+        <summary>Limit order</summary>
+        <div class="glossary-body">
+          <p>"Only buy/sell at this price or better." You control the price, but the order might not fill at
+          all if the market never reaches it.</p>
+        </div>
+      </details>
+
+      <details class="glossary-card">
+        <summary>Bid / ask spread</summary>
+        <div class="glossary-body">
+          <p>The <strong>bid</strong> is the highest price a buyer will pay right now; the <strong>ask</strong>
+          is the lowest price a seller will accept. The small gap between them is the spread.</p>
+        </div>
+      </details>
+
+      <details class="glossary-card">
+        <summary>Single stock vs. fund</summary>
+        <div class="glossary-body">
+          <p>A single stock (e.g. one company) can swing wildly and even go to zero. A mutual fund or ETF
+          (e.g. <code>VOO</code>) holds many companies at once, spreading out that risk. See
+          <a href="funds.html#funds">fund types</a>.</p>
+        </div>
+      </details>
+
+      <details class="glossary-card">
+        <summary>Dividend</summary>
+        <div class="glossary-body">
+          <p>A cash payment some companies/funds make to shareholders, usually quarterly, as a share of
+          profits. Not guaranteed and can be reduced or stopped.</p>
+        </div>
+      </details>
+
+      <details class="glossary-card">
+        <summary>Volatility</summary>
+        <div class="glossary-body">
+          <p>How much a price swings up and down. Higher volatility means bigger, faster moves in both
+          directions — more potential gain, more potential loss.</p>
+        </div>
+      </details>
+    </div>
+
+    <h2 class="section-title" id="mistakes">Common beginner mistakes</h2>
+    <ol class="steps-list">
+      <li><strong>Investing money you'll need soon.</strong> Prices can drop sharply in the short term; money
+      needed within 1–3 years is usually kept out of the market.</li>
+      <li><strong>Putting it all in one stock.</strong> Exciting, but one bad company can sink a big chunk of
+      your money — a broad fund spreads that risk out.</li>
+      <li><strong>Trying to time the market.</strong> Guessing the "perfect" moment to buy or sell is
+      notoriously hard even for professionals; investing on a regular schedule sidesteps the guesswork.</li>
+      <li><strong>Panic selling during a drop.</strong> Locks in the loss. Markets have historically recovered
+      over long periods, though past performance never guarantees future results.</li>
+      <li><strong>Ignoring fees.</strong> A high expense ratio or frequent trading costs quietly eat into
+      returns over decades — see <a href="funds.html#glossary">expense ratio</a>.</li>
+      <li><strong>Skipping the emergency fund.</strong> Without one, an unexpected bill can force you to sell
+      investments at a bad time. See <a href="savings.html">Money Management &amp; Savings</a>.</li>
+    </ol>
+  </main>
+
+  <footer>
+    <div class="container">General reference only · Not financial, tax, or legal advice · Figures are general 2025 US guidelines and change — verify current numbers with the IRS or your brokerage</div>
+  </footer>
+
+  <script src="help.js"></script>
+</body>
+</html>
