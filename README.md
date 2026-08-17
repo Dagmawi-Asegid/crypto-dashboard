@@ -1,5 +1,7 @@
 # Market Dashboard
 
+![Crypto Market Trends screenshot](screenshots/crypto-dashboard.jpg)
+
 A small, no-build-step market dashboard with six pages:
 
 - **`index.html` — Crypto.** Top 20 coins by market cap via the CoinGecko public API (no key needed), with a
